@@ -1,1 +1,22 @@
-//
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.btn-primary {
+    @apply .text-white .rounded-lg .text-sm .py-2 .px-5;
+    background-color: $primary-color;
+    box-shadow: 0 2px 7px 0 #b0eaff;
+}
+
+.card-heading {
+    @apply .font-normal .text-lg .text-black .py-3 .mb-3 .-ml-5 .border-l-4 .pl-4;
+    border-color: $secondary-color;
+}
