@@ -11,12 +11,7 @@
     <div class="md:flex md:flex-wrap -mx-3">
         @forelse ($projects as $project)
             <div class="md:w-1/3 px-3 pb-6">
-                <div class="bg-white p-5 rounded-lg shadow" style="height: 200px;">
-                    <h3 class="card-heading">
-                        <a href="{{ $project->path() }}" class="text-black">{{ $project->title }}</a>
-                    </h3>
-                    <div class="text-gray-light">{{ str_limit($project->description, 70) }}</div>
-                </div>
+                @include('projects.card')
             </div>
         @empty
             <div>
