@@ -1,28 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <form method="POST" action="/projects" class="container">
+    <div class="md:w-1/2 md:mx-auto bg-white md:py-12 md:px-16 rounded shadow">
+        <h1 class="text-2xl font-normal mb-10 text-center">Let's start something new</h1>
+        <form method="POST" action="/projects"
+        >
         @csrf
-        <h1 >Create a Project</h1>
 
-        <div>
-            <label for="">Title</label>
-            <div>
-                <input type="text" name="title" placeholder="Title" />
-            </div>
-        </div>
-        <div>
-            <label for="">Description</label>
-            <div>
-                <input type="text" name="description" placeholder="Description" />
-            </div>
-        </div>
-        <div >
-            <div >
-                <button type="submit" >Create Project</button>
-                <a href="/projects">Cancel</a>
-            </div>
-        </div>
+        @include('projects.partials.form', [
+            'project' => new App\Models\Project,
+            'buttonText' => 'Create Project'
+            ])
     </form>
+    </div>
+
 @endsection

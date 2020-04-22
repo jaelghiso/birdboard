@@ -6,7 +6,7 @@
             <p class="text-gray-600 pr-6">
                 <a href="/projects" class="text-gray-600">My Projects</a> / {{ $project->title }}
             </p>
-            <a href="#" class="btn-primary">Add Task</a>
+            <a href="{{ $project->path().'/edit' }}" class="btn-primary">Edit Project</a>
         </div>
 
     </header>
@@ -51,7 +51,9 @@
 
         </div>
         <div class="md:w-1/4 px-3">
-            @include('projects.card')
+            @include('projects.partials.card')
+
+            @include('projects.activity.card')
         </div>
 
     </div>
