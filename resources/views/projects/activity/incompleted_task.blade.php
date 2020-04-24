@@ -1,2 +1,2 @@
-<span class="text-green-600 font-bold">{{ $activity->user->name }}</span>
+<span class="text-teal-700 font-bold">{{ $activity->user->name }}</span>
  incompleted "{{ $activity->subject->body }}"

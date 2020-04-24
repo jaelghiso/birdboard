@@ -5,7 +5,7 @@
 
         <div class="control">
             <input type="text"
-            class="input bg-transparent border border-grey-200 rounded p-2 text-xs w-full"
+            class="input bg-transparent border border-gray-400 rounded p-2 text-xs w-full"
             name="title"
             placeholder="My next awesome project"
             required
@@ -17,17 +17,17 @@
 
         <div class="control">
             <textarea name="description" rows="10"
-            class="textarea bg-transparent border border-grey-200 rounded p-2 text-xs-w-full"
+            class="textarea bg-transparent border border-gray-400 rounded p-2 text-xs-w-full"
             placeholder="I should start learning piano."
             required
             > {{ $project->description }}</textarea>
         </div>
     </div>
-    <div class="filed">
+    <div class="field">
         <div class="control">
             <button type="submit" class="btn btn-primary is-link mr-2">{{ $buttonText ?? '' }}</button>
 
-            <a href="{{ $project->path() }}">Cancel</a>
+            <a href="{{ $project->path() }}" class="text-gray-600 font-bold">Cancel</a>
         </div>
     </div>
     @if ($errors->any())

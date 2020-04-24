@@ -17,4 +17,9 @@ class ProjectPolicy
             ? Response::allow()
             : Response::deny('You do not own this post.');
     }
+
+    public function manage(User $user, Project $project)
+    {
+        return $user->is($project->owner);
+    }
 }

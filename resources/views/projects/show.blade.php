@@ -4,7 +4,7 @@
     <header class="flex items-center mb-3 py-4">
         <div class="flex justify-between items-center w-full">
             <p class="text-gray-600">
-                <a href="/projects" class="text-gray-600">My Projects</a> / {{ $project->title }}
+                <a href="/projects" class="text-gray-600">My Projects</a> / <span class="text-primary font-bold">{{ $project->title }}</span>
             </p>
             <div class="flex items-center">
                 @foreach ($project->members as $member)
@@ -71,8 +71,11 @@
         </div>
         <div class="md:w-1/4 px-3">
             @include('projects.card')
-
             @include('projects.activity.card')
+
+            @can('manage', $project)
+                @include('projects.invite')
+            @endcan
         </div>
 
     </div>

@@ -13978,6 +13978,10 @@ video {
   border-color: #8ae2fe;
 }
 
+.text-primary {
+  color: #47d5fe;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;

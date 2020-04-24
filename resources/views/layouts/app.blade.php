@@ -52,13 +52,16 @@
                                     </li>
                                 @endif
                             @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                <li class="flex flex-col">
+                                    <a href="#" class="self-center">
+                                        <img src="{{ gravatar_url(Auth::user()->email) }}"
+                                        alt="{{ Auth::user()->name }}'s avatar"
+                                        class="rounded-full w-12 border-4 border-teal-400 shadow">
+
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <div class="self-center">
+                                        <a href="{{ route('logout') }}" class="text-sm text-gray-600 font-bold"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
