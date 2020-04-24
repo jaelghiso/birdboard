@@ -28,6 +28,7 @@ class ManageProjectsTest extends TestCase
     public function testUserCanCreateProject()
     {
 
+
         $this->signIn();
 
         $this->get('/projects/create')->assertStatus(200);

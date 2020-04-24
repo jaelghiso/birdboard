@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Activity;
+use App\Traits\RecordsActivity;
 
 class Project extends Model
 {
+    use RecordsActivity;
+
     protected $fillable = ['title', 'description', 'owner_id', 'notes'];
 
     public function path()
@@ -27,11 +30,6 @@ class Project extends Model
     public function addTask($body)
     {
         return $this->tasks()->create(compact('body'));
-    }
-
-    public function recordActivity($description)
-    {
-        $this->activity()->create(compact('description'));
     }
 
     public function activity()

@@ -39,19 +39,26 @@
             </div>
             <div>
                 <h2 class="text-gray-600 text-lg mb-3">General Notes</h2>
-                <form action="{{ $project->path() }}" method="POST">
+                <form method="POST" action="{{ $project->path() }}">
                     @csrf
                     @method('PATCH')
-                    <textarea name="notes" class="card w-full" style="min-height:200px;" placeholder="Anything special that you want a note of?">{{ $project->notes }}</textarea>
+
+                    <textarea
+                        name="notes"
+                        class="card text-default w-full mb-4"
+                        style="min-height: 200px"
+                        placeholder="Anything special that you want to make a note of?"
+                    >{{ $project->notes }}</textarea>
+
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
-
+                @include('errors')
             </div>
 
 
         </div>
         <div class="md:w-1/4 px-3">
-            @include('projects.partials.card')
+            @include('projects.card')
 
             @include('projects.activity.card')
         </div>
