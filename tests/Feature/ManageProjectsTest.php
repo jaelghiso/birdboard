@@ -27,8 +27,6 @@ class ManageProjectsTest extends TestCase
 
     public function testUserCanCreateProject()
     {
-
-
         $this->signIn();
 
         $this->get('/projects/create')->assertStatus(200);
@@ -49,6 +47,29 @@ class ManageProjectsTest extends TestCase
             ->assertSee($attributes['title'])
             ->assertSee($attributes['description'])
             ->assertSee($attributes['notes']);
+    }
+
+    public function testUserCanDeleteProject()
+    {
+        $project = ProjectFactory::create();
+
+        $this->actingAs($project->owner)
+            ->delete($project->path())
+            ->assertRedirect('/projects');
+
+        $this->assertDatabaseMissing('projects', $project->only('id'));
+    }
+
+    public function testUnauthorizedUsersCannotDeleteProject()
+    {
+        $project = ProjectFactory::create();
+
+        $this->delete($project->path())
+            ->assertRedirect('/login');
+
+        $this->signIn();
+
+        $this->delete($project->path())->assertStatus(403);
     }
 
     public function testUserCanUpdateProject()
@@ -76,6 +97,15 @@ class ManageProjectsTest extends TestCase
             ->get($project->path())
             ->assertSee($project->title)
             ->assertSee(Str::limit($project->description, 70));
+    }
+
+    public function testUserCanSeeProjectsTheyHaveBeenInvitedOnTheirDashboard()
+    {
+        $user = $this->signIn();
+
+        $project = tap(ProjectFactory::create())->invite($user);
+
+        $this->get('/projects')->assertSee($project->title);
     }
 
     public function testAuthenticatedUserCannotViewTheProjectsOfOthers()
