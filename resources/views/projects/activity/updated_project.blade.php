@@ -1,6 +1,6 @@
 @if(count($activity->changes['after']) == 1)
-    <span class="text-teal-700 font-bold">{{ $activity->user->name }}</span>
-    updated the {{ key($activity->changes['after']) }} of the project
+    <span class="text-accent font-bold">{{ $activity->user->name }}</span>
+    <span class="text-default">updated the {{ key($activity->changes['after']) }} of the project</span>
 @else
-    <span class="text-teal-700 font-bold">{{ $activity->user->name }}</span> updated the project
+    <span class="text-accent font-bold">{{ $activity->user->name }}</span> updated the project
 @endif

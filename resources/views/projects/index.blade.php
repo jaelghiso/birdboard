@@ -3,8 +3,8 @@
 @section('content')
     <header class="flex items-center mb-3 py-4">
         <div class="flex justify-between items-end w-full">
-            <h2 class="text-gray-600">My Projects</h2>
-            <a href="/projects/create" class="btn-primary">Add Project</a>
+            <h2 class="text-muted text-base font-normal">My Projects</h2>
+            <a href="/projects/create" class="button-primary">Add Project</a>
         </div>
 
     </header>

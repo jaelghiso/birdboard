@@ -1,2 +1,2 @@
-<span class="text-teal-700 font-bold">{{ $activity->user->name }}</span>
-created "{{ $activity->subject->body }}"
+<span class="text-accent font-bold">{{ $activity->user->name }}</span>
+<span class="text-default">created "{{ $activity->subject->body }}"</span>

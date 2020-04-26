@@ -20,16 +20,16 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.css" integrity="sha256-8BrtNNtStED9syS9F+xXeP815KGv6ELiCfJFQmGi1Bg=" crossorigin="anonymous" />
 </head>
-<body class="bg-gray-200">
+<body class="theme-light bg-page">
     <div id="app">
-        <nav class="bg-white shadow">
+        <nav class="bg-header shadow">
             <div class="container mx-auto">
                 <div class="flex justify-between items-center py-3">
                     <h1>
                         <a class="flex justify-between items-center" href="{{ url('/') }}">
                             <img src="/images/birdcheck.png" alt="">
-                            <span class="text-black font-bold text-xl px-2">birdboard </span>
-                            <span class="text-gray-700 text-sm px-1">| feathery reminders</span>
+                            <span class="text-default font-bold text-xl px-2">birdboard </span>
+                            <span class="text-muted text-sm px-1">| feathery reminders</span>
                         </a>
                     </h1>
 
@@ -40,40 +40,38 @@
                         </ul>
 
                         <!-- Right Side Of Navbar -->
-                        <ul class="">
+                        <div class="flex items-center ml-auto">
                             <!-- Authentication Links -->
                             @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
+                                    <a class="text-sm text-muted-light font-bold m-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+
                                 @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
+                                    <a class="text-sm text-muted-light font-bold m-2" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             @else
-                                <li class="flex flex-col">
-                                    <a href="#" class="self-center">
+                                <theme-switcher></theme-switcher>
+                                <a href="#" class="flex items-center text-default no-underline text-sm"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-prev
+                                    >
                                         <img src="{{ gravatar_url(Auth::user()->email) }}"
                                         alt="{{ Auth::user()->name }}'s avatar"
-                                        class="rounded-full w-12 border-4 border-teal-400 shadow">
+                                        class="rounded-full w-12 border-4 border-accent-light shadow">
+                                        <span class="text-muted ml-2">{{ Auth::user()->name }}</span>
+                                </a>
 
-                                    </a>
-
-                                    <div class="self-center">
-                                        <a href="{{ route('logout') }}" class="text-sm text-gray-600 font-bold"
+                                <div class="self-center">
+                                    <a href="{{ route('logout') }}" class="text-sm text-muted-light font-bold"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
-                                        </a>
+                                    </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
-                                        </form>
-                                    </div>
-                                </li>
+                                    </form>
+                                </div>
                             @endguest
-                        </ul>
+                            </div>
                     </div>
                 </div>
 

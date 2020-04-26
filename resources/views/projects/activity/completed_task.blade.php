@@ -1,2 +1,2 @@
-<span class="text-teal-700 font-bold">{{ $activity->user->name }}</span>
-completed "{{ $activity->subject->body }}"
+<span class="text-accent font-bold">{{ $activity->user->name }}</span>
+<span class="text-default">completed "{{ $activity->subject->body }}"</span>
