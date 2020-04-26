@@ -1,0 +1,25 @@
+.dropdown-toggle {
+    > button:focus {
+        outline: 0;
+    }
+}
+
+.dropdown-menu-link {
+    @apply .block .text-default .no-underline .text-sm .px-4;
+
+    &:hover {
+        @apply .text-accent;
+    }
+}
+
+.caret {
+    width: 0;
+    height: 0;
+    display: inline-block;
+    margin-left: 10px;
+    border: 10px solid transparent;
+
+    &.up {
+        border-bottom-color: theme("colors.page");
+    }
+}

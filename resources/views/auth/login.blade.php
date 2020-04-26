@@ -33,7 +33,7 @@
 
         <div class="field mb-6">
             <div class="col-md-8 offset-md-4">
-                <button type="submit" class="button-primary mr-2">
+                <button type="submit" class="button mr-2">
                     {{ __('Login') }}
                 </button>
 

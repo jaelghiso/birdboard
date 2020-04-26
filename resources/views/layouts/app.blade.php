@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.css" integrity="sha256-8BrtNNtStED9syS9F+xXeP815KGv6ELiCfJFQmGi1Bg=" crossorigin="anonymous" />
+
 </head>
 <body class="theme-light bg-page">
     <div id="app">
@@ -43,6 +43,7 @@
                         <div class="flex items-center ml-auto">
                             <!-- Authentication Links -->
                             @guest
+                                <theme-switcher></theme-switcher>
                                     <a class="text-sm text-muted-light font-bold m-2" href="{{ route('login') }}">{{ __('Login') }}</a>
 
                                 @if (Route::has('register'))
@@ -50,26 +51,25 @@
                                 @endif
                             @else
                                 <theme-switcher></theme-switcher>
-                                <a href="#" class="flex items-center text-default no-underline text-sm"
-                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-prev
-                                    >
-                                        <img src="{{ gravatar_url(Auth::user()->email) }}"
-                                        alt="{{ Auth::user()->name }}'s avatar"
-                                        class="rounded-full w-12 border-4 border-accent-light shadow">
-                                        <span class="text-muted ml-2">{{ Auth::user()->name }}</span>
-                                </a>
+                                <dropdown align="right" width="100px">
+                                    <template v-slot:trigger>
+                                        <button href="#" class="flex items-center text-default no-underline text-sm"
 
-                                <div class="self-center">
-                                    <a href="{{ route('logout') }}" class="text-sm text-muted-light font-bold"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                    </a>
+                                        >
+                                            <img src="{{ gravatar_url(Auth::user()->email) }}"
+                                            class="rounded-full w-12 border-4 border-accent-light shadow">
+                                            <span class="text-muted ml-2">{{ Auth::user()->name }}</span>
+                                        </button>
+                                    </template>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <template v-slot:default>
+                                        <form action="{{ route('logout') }}" method="POST" id="logout-form">
                                             @csrf
-                                    </form>
-                                </div>
+
+                                            <button type="submit" class="dropdown-menu-link text-left w-full">Logout</button>
+                                        </form>
+                                    </template>
+                                </dropdown>
                             @endguest
                             </div>
                     </div>

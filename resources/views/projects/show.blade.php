@@ -16,7 +16,7 @@
                         alt="{{ $project->owner->name }}'s avatar"
                         class="rounded-full w-10 -mr-2 border-2 border-accent-light shadow">
 
-                    <a href="{{ $project->path().'/edit' }}" class="button-primary ml-6">Edit Project</a>
+                    <a href="{{ $project->path().'/edit' }}" class="button ml-6">Edit Project</a>
             </div>
 
         </div>
@@ -29,7 +29,7 @@
 
                 {{-- tasks --}}
                 @foreach ($project->tasks as $task)
-                    <div class="card-primary mb-3">
+                    <div class="card mb-3">
                         <form method="POST" action="{{ $task->path() }}">
                             @method('PATCH')
                             @csrf
@@ -42,7 +42,7 @@
                     </div>
 
                 @endforeach
-                <div class="card-primary mb-3">
+                <div class="card mb-3">
                     <form action="{{ $project->path() . '/tasks' }}" method="POST">
                         @csrf
                         <input placeholder="Add a new task..." class="text-default bg-card w-full py-1" name="body"/>
@@ -57,12 +57,12 @@
 
                     <textarea
                         name="notes"
-                        class="card-primary text-default w-full mb-4"
+                        class="card text-default w-full mb-4"
                         style="min-height: 200px"
                         placeholder="Anything special that you want to make a note of?"
                     >{{ $project->notes }}</textarea>
 
-                    <button type="submit" class="button-primary">Save</button>
+                    <button type="submit" class="button">Save</button>
                 </form>
                 @include('errors')
             </div>

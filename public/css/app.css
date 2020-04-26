@@ -648,7 +648,7 @@ video {
   --text-accent-light-color: #8ae2fe;
 }
 
-.button-primary {
+.button {
   color: white;
   background-color: var(--button-background-color);
   border-radius: 0.5rem;
@@ -659,26 +659,55 @@ video {
   padding-right: 1.25rem;
 }
 
-.button-primary.is-outlined {
+.button.is-outlined {
   background-color: var(--card-background-color);
   border-width: 1px;
   border-color: var(--text-accent-color);
   color: var(--text-accent-color);
 }
 
-.theme-light .button-primary {
+.theme-light .button {
   box-shadow: 0 2px 7px 0 #b0eaff;
 }
 
-.theme-dark .button-primary {
+.theme-dark .button {
   box-shadow: 0 2px 7px 0 #00658b;
 }
 
-.card-primary {
+.card {
   background-color: var(--card-background-color);
   padding: 1.25rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.dropdown-toggle > button:focus {
+  outline: 0;
+}
+
+.dropdown-menu-link {
+  display: block;
+  color: var(--text-default-color);
+  text-decoration: none;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.dropdown-menu-link:hover {
+  color: var(--text-accent-color);
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  margin-left: 10px;
+  border: 10px solid transparent;
+}
+
+.caret.up {
+  border-bottom-color: var(--page-background-color);
 }
 
 body,

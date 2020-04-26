@@ -17,12 +17,12 @@
                             type="text"
                             id="title"
                             class="bg-card border border-muted-light text-sm text-muted py-2 px-2 block w-full rounded"
-                            :class="errors.title ? 'border-red-600' : ''"
+                            :class="form.errors.title ? 'border-red-600' : ''"
                         />
                         <span
                             class="text-xs text-red-600"
-                            v-if="errors.title"
-                            v-text="errors.title[0]"
+                            v-if="form.errors.title"
+                            v-text="form.errors.title[0]"
                         ></span>
                     </div>
                     <div class="mb-4">
@@ -36,12 +36,14 @@
                             rows="6"
                             id="description"
                             class="bg-card border border-muted-light text-sm text-muted py-2 px-2 block w-full rounded"
-                            :class="errors.description ? 'border-red-600' : ''"
+                            :class="
+                                form.errors.description ? 'border-red-600' : ''
+                            "
                         ></textarea>
                         <span
                             class="text-xs text-red-600"
-                            v-if="errors.description"
-                            v-text="errors.description[0]"
+                            v-if="form.errors.description"
+                            v-text="form.errors.description[0]"
                         ></span>
                     </div>
                 </div>
@@ -93,47 +95,40 @@
             <footer class="flex justify-end">
                 <button
                     type="button"
-                    class="button-primary is-outlined mr-4"
+                    class="button is-outlined mr-4"
                     @click.prevent="$modal.hide('new-project')"
                 >
                     Cancel
                 </button>
-                <button class="button-primary">Create Project</button>
+                <button class="button">Create Project</button>
             </footer>
         </form>
     </modal>
 </template>
 <script>
-import axios from "axios";
+import BirdboardForm from "./BirdboardForm.js";
+
 export default {
     data() {
         return {
-            form: {
+            form: new BirdboardForm({
                 title: "",
                 description: "",
-                tasks: [
-                    {
-                        id: "",
-                        body: ""
-                    }
-                ]
-            },
-            errors: {}
+                tasks: [{ body: "" }]
+            })
         };
     },
     methods: {
         addTask() {
             this.form.tasks.push({ body: "" });
         },
-        submit() {
-            axios
-                .post("/projects", this.form)
-                .then(response => {
-                    location = response.data.message;
-                })
-                .catch(error => {
-                    this.errors = error.response.data.errors;
-                });
+        async submit() {
+            if (!this.form.tasks[0].body) {
+                delete this.form.originalData.tasks;
+            }
+            this.form
+                .submit("/projects")
+                .then(response => (location = response.data.message));
         }
     }
 };

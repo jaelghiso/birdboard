@@ -1,4 +1,4 @@
-<div class="card-primary flex flex-col" style="height: 200px;">
+<div class="card flex flex-col" style="height: 200px;">
     <h3 class="font-normal text-xl py-2 -ml-5 mb-3 border-l-4 border-accent-light pl-4">
         <a href="{{ $project->path() }}" class="text-muted font-bold no-underline">{{ $project->title }}</a>
     </h3>

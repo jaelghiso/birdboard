@@ -44,7 +44,7 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button-primary is-link mr-2">
+                <button type="submit" class="button is-link mr-2">
                     {{ __('Register') }}
                 </button>
             </div>
