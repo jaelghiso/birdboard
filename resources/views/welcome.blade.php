@@ -49,7 +49,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #47cdff;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/projects') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -80,19 +80,14 @@
             @endif
 
             <div class="content">
+                <img src="/images/birdcheck.png" alt="">
                 <div class="title m-b-md">
-                    Laravel
+                    Birdboard
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laracasts.com/series/build-a-laravel-app-with-tdd">Watch the Laracast series</a>
+
                 </div>
             </div>
         </div>

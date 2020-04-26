@@ -58,7 +58,7 @@
                                         >
                                             <img src="{{ gravatar_url(Auth::user()->email) }}"
                                             class="rounded-full w-12 border-4 border-accent-light shadow">
-                                            <span class="text-muted ml-2">{{ Auth::user()->name }}</span>
+                                            <span class="text-muted font-bold ml-2">{{ Auth::user()->name }}</span>
                                         </button>
                                     </template>
 

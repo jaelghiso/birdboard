@@ -25,9 +25,8 @@
     </div>
     <div class="field">
         <div class="control">
-            <button type="submit" class="button is-link mr-2">{{ $buttonText ?? '' }}</button>
-
-            <a href="{{ $project->path() }}" class="text-default font-bold">Cancel</a>
+            <a href="{{ $project->path() }}" class="button is-outlined text-default font-bold mr-2">Cancel</a>
+            <button type="submit" class="button is-link">{{ $buttonText ?? '' }}</button>
         </div>
     </div>
     @if ($errors->any())
