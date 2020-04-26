@@ -39,6 +39,24 @@ class ManageProjectsTest extends TestCase
             ->assertSee($attributes['notes']);
     }
 
+    public function testTaskCanBeIncludedInNewProject()
+    {
+        $this->signIn();
+
+        $this->get('/projects/create')->assertStatus(200);
+
+        $attributes = factory(Project::class)->raw();
+
+        $attributes['tasks'] = [
+            ['body' => 'Task 1'],
+            ['body' => 'Task 2']
+        ];
+
+        $this->post('/projects', $attributes);
+
+        $this->assertCount(2, Project::first()->tasks);
+    }
+
     public function testUserCanDeleteProject()
     {
         $project = ProjectFactory::create();
